@@ -20,6 +20,9 @@ export class LstContatos {
     public get length(): number {
         return this._length;
     }
+    public set length(value: number) {
+        this._length = value;
+    }
 
     public push(objContato: Contato): void {
         if (this._length == 0) {
@@ -27,11 +30,12 @@ export class LstContatos {
         } else {
             let lstAux: LstContatos = this;
             while (lstAux._sucessor != null) {
+                lstAux.length++;
                 lstAux = lstAux._sucessor;
             }
+            lstAux.length++;
             lstAux._sucessor = new LstContatos(objContato);
         }
-        this._length++;
     }
 
     public unshift(objContato: Contato): void {
